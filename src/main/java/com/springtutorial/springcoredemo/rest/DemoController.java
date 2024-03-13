@@ -12,24 +12,18 @@ public class DemoController {
 
     //define private field for the dependency
     private Coach coach;
-    private Coach anotherCoach;
+
 
     //define a constructor for dependency injection
 
 
     //using Qualifier Annotation
     @Autowired  // when you have a single constructor the autowired annotation is optional
-    public DemoController(@Qualifier("grizzlyCoach") Coach coach,
-                          @Qualifier("liftingCoach") Coach anotherCoach) {
+    public DemoController(@Qualifier("grizzlyCoach") Coach coach) {
         System.out.println(getClass().getSimpleName() + " is in constructor");
         this.coach = coach;
-        this.anotherCoach = anotherCoach;
     }
 
-    @GetMapping("/check")
-    public String check(){
-        return  "Comparing beans: coach == anotherCoach " + (coach==anotherCoach);
-    }
 
 //    public DemoController(Coach coach) {
 //        this.coach = coach;
